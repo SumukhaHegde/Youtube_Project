@@ -1,10 +1,11 @@
 import React from "react";
-import logo from "../Images/youTubeLogo.png";
-import userIcon from "../Images/UserIcon.jpg";
+import logo from "../../Images/youTubeLogo.png";
+import userIcon from "../../Images/UserIcon.jpg";
+import ".//Header_module.scss";
 const Header = () => {
   return (
     <div>
-      <div>
+      <div className="header">
         <div>
           <div>☰</div>
           <img src={logo} alt="logo" />
@@ -14,7 +15,7 @@ const Header = () => {
           <button>🔍</button>
         </div>
         <div>
-          <button>🔔</button>
+          <button className="bgc">🔔</button>
           <img src={userIcon} alt="UserIcon" />
         </div>
       </div>
