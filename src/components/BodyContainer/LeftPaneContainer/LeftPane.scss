@@ -1,0 +1,46 @@
+@mixin leftPaneItems() {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.left-container {
+  height: 100%;
+  width: 5%;
+  border-right: #ccc solid 0.1rem;
+  .left-pane-items {
+    height: 50%;
+    width: 100%;
+  }
+  .left-pane-home {
+    @include leftPaneItems();
+    icon {
+      font-size: 2.5rem;
+    }
+  }
+  .left-pane-shorts {
+    @include leftPaneItems();
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  .left-pane-subscription {
+    @include leftPaneItems();
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  .left-pane-you {
+    @include leftPaneItems();
+    img {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
