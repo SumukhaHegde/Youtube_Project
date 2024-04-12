@@ -6,17 +6,17 @@ const Header = () => {
   return (
     <div>
       <div className="header">
-        <div>
-          <div>☰</div>
-          <img src={logo} alt="logo" />
+        <div className="header-left-section">
+          <div className="yt-hamburger">☰</div>
+          <img className="yt-logo" src={logo} alt="logo" />
         </div>
-        <div>
-          <input type="text" placeholder="Search" />
+        <div className="header-middle-section">
+          <input className="search-bar" type="text" placeholder="Search" />
           <button>🔍</button>
         </div>
-        <div>
-          <button className="bgc">🔔</button>
-          <img src={userIcon} alt="UserIcon" />
+        <div className="header-right-section">
+          <button>🔔</button>
+          <img className="user-icon" src={userIcon} alt="UserIcon" />
         </div>
       </div>
     </div>

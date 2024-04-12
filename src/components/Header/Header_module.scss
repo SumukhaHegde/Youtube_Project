@@ -1,11 +1,88 @@
-.bgc {
-  background: #000;
-  &:hover {
-    background-color: red;
-  }
+$header-div-width: 10%;
+$search-bar-radius: 20px;
+$search-bar-border-color: #ccc;
+body {
+  margin: 0;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  height: 4rem;
+  justify-items: center;
+  align-items: center;
+  border-bottom: $search-bar-border-color solid 0.1rem;
+  .header-left-section {
+    width: $header-div-width;
+    display: flex;
+    margin-left: 2.2rem;
+    justify-items: center;
+    align-items: center;
+  }
+  .yt-hamburger {
+    width: 1.5rem;
+    height: 100%;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  .yt-logo {
+    width: 5rem;
+    height: 1.5rem;
+    margin-left: 1.5rem;
+    cursor: pointer;
+  }
+  .header-middle-section {
+    width: 30%;
+    display: flex;
+    height: 60%;
+    border: none;
+    .search-bar {
+      width: 92%;
+      border-color: $search-bar-border-color;
+      border-top-left-radius: $search-bar-radius;
+      border-bottom-left-radius: $search-bar-radius;
+      border-width: 0.1rem;
+      border-style: solid;
+      padding-left: 1rem;
+      &:focus,
+      &input:focus {
+        outline: none;
+      }
+    }
+    button {
+      width: 8%;
+      border-top-right-radius: $search-bar-radius;
+      border-bottom-right-radius: $search-bar-radius;
+      border-width: 0.1rem;
+      border-color: $search-bar-border-color;
+      border-style: solid;
+      border-left-style: none;
+      cursor: pointer;
+    }
+  }
+  .header-right-section {
+    width: $header-div-width;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    margin-right: -3rem;
+    .user-icon {
+      border-radius: 50%;
+      width: 2rem;
+      margin-left: 1rem;
+    }
+    button {
+      height: 3rem;
+      width: 3rem;
+      font-size: 1.5rem;
+      padding-bottom: 0.3rem;
+      padding-right: 0.3rem;
+      border: none;
+      border-radius: 50%;
+      background-color: transparent;
+      &:hover {
+        background-color: $search-bar-border-color;
+      }
+    }
+  }
 }
