@@ -1,14 +1,19 @@
 import React from "react";
 import "./videoCard.scss";
-const VideoCards = (videoDetails) => {
-  console.log(videoDetails);
+const VideoCards = ({ videoDetails }) => {
+  //console.log(videoDetails);
+  const { channelTitle, title, publishedAt, thumbnails } = videoDetails;
+  const tumbnail = thumbnails.medium.url;
+  const todayDate = new Date().toISOString().slice(0, 10).replaceAll("-", "");
+  const publishedDate = publishedAt.slice(0, 10).replaceAll("-", "");
+  const numberOfYears = todayDate - publishedDate;
+  // console.log(numberOfYears);
+  // console.log(todayDate);
+
   return (
     <div className="video-card">
       <div className="video-tumbnail-img">
-        <img
-          src="https://i.ytimg.com/vi/JIskeGNEVEk/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_g6AArgIigIMCAAQARh_ICIoWDAP&rs=AOn4CLDE-zrZW2uy-mVvh8bmzMeNCXfRYQ"
-          alt="tumbnail"
-        />
+        <img src={tumbnail} alt="tumbnail" />
       </div>
       <div className="video-details">
         <div className="author-chanel-img">
@@ -18,9 +23,8 @@ const VideoCards = (videoDetails) => {
           />
         </div>
         <div className="video-title">
-          SASS Tutorial (build your own CSS library) #14 - Making Utility
-          Classes
-          <div className="video-author-details">Net Ninja</div>
+          {title}
+          <div className="video-author-details">{channelTitle}</div>
           <div className="video-meta-data">
             <span>23K views</span> &#8226; 2 years ago<span></span>
           </div>

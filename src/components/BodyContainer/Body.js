@@ -12,6 +12,7 @@ const Body = () => {
     const items = videoJsonData?.items;
     setVideoItems(items);
   };
+  console.log(videoItems);
 
   useEffect(() => {
     getVideos();
@@ -19,10 +20,12 @@ const Body = () => {
   return (
     <div className="body-container" style={{ height: "100%" }}>
       <LeftPane />
-      {videoItems &&
-        videoItems?.map((item) => {
-          <VideoCards key={item.id} videoDetails={item.snippet} />;
-        })}
+      <div className="video-container">
+        {videoItems &&
+          videoItems?.map((item) => (
+            <VideoCards key={item.id} videoDetails={item.snippet} />
+          ))}
+      </div>
     </div>
   );
 };

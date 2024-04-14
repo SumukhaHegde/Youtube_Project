@@ -13,7 +13,7 @@ const LeftPane = () => {
     <div
       className="left-pane"
       style={{
-        width: isLeftPaneExpanded ? "12%" : "5%",
+        width: isLeftPaneExpanded ? "10%" : "5%",
         overflow: isLeftPaneExpanded ? "" : "hidden",
       }}
     >
