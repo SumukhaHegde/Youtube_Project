@@ -7,6 +7,7 @@ import youIcon from "../../../Constants/Images/you_icon.png";
 import homeIcon from "../../../Constants/Images/home-icon.png";
 import LeftPaneGuide from "./LeftPaneGuide";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 const LeftPane = () => {
   const { isLeftPaneExpanded } = useSelector((store) => store.leftPaneGuide);
   return (
@@ -22,10 +23,12 @@ const LeftPane = () => {
       ) : (
         <div className="left-container">
           <div className="left-pane-items">
-            <div className="left-pane-home">
-              <img src={homeIcon} />
-              Home
-            </div>
+            <Link to="/">
+              <div className="left-pane-home">
+                <img src={homeIcon} />
+                Home
+              </div>
+            </Link>
             <div className="left-pane-shorts">
               <img src={shorts} />
               Shorts

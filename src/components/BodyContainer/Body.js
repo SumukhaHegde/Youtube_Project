@@ -1,31 +1,14 @@
 import React, { useEffect, useState } from "react";
 import LeftPane from "./LeftPaneContainer/LeftPane";
-import VideoCards from "./VideoContainer/VideoCards";
 import "./body.scss";
-import { getVideosApi } from "../../Constants/API/Api";
+import VideoContainer from "./VideoContainer/VideoContainer";
+import { Outlet } from "react-router-dom";
 
 const Body = () => {
-  const [videoItems, setVideoItems] = useState([]);
-  const getVideos = async () => {
-    const videoData = await fetch(getVideosApi);
-    const videoJsonData = await videoData.json();
-    const items = videoJsonData?.items;
-    setVideoItems(items);
-  };
-  console.log(videoItems);
-
-  useEffect(() => {
-    getVideos();
-  }, []);
   return (
     <div className="body-container" style={{ height: "100%" }}>
       <LeftPane />
-      <div className="video-container">
-        {videoItems &&
-          videoItems?.map((item) => (
-            <VideoCards key={item.id} videoDetails={item.snippet} />
-          ))}
-      </div>
+      <Outlet />
     </div>
   );
 };
