@@ -24,6 +24,10 @@
   .left-pane-items {
     height: 50%;
     width: 100%;
+    a {
+      text-decoration: none;
+      color: black;
+    }
   }
   .left-pane-home {
     @include leftPaneItems();
