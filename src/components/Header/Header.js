@@ -3,13 +3,16 @@ import logo from "../../Constants/Images/youTubeLogo.png";
 import userIcon from "../../Constants/Images/UserIcon.jpg";
 import ".//Header_module.scss";
 import { setIsleftPaneExpanded } from "../../Utils/store/leftPaneSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchSuggestionsApi } from "../../Constants/API/Api";
+import { flushSync } from "react-dom";
+import { addSuggestionCache } from "../../Utils/store/searchSuggestionSlice";
 const Header = () => {
-  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
+  const suggestionCache = useSelector((store) => store.searchSuggestion);
 
   const handleLeftPaneExpansion = () => {
     dispatch(setIsleftPaneExpanded());
@@ -17,7 +20,11 @@ const Header = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      getSearchQueryResult();
+      if (suggestionCache[searchQuery]) {
+        setSearchSuggestions(suggestionCache[searchQuery]);
+      } else {
+        getSearchQueryResult();
+      }
     }, 200);
 
     return () => {
@@ -29,10 +36,15 @@ const Header = () => {
     const data = await fetch(searchSuggestionsApi + searchQuery);
     const dataJson = await data.json();
     setSearchSuggestions(dataJson[1]);
+    dispatch(addSuggestionCache({ [searchQuery]: dataJson[1] }));
   };
 
   return (
-    <div>
+    <div
+      onClick={() => {
+        setShowSuggestions(false);
+      }}
+    >
       <div className="header">
         <div className="header-left-section">
           <div className="yt-hamburger" onClick={handleLeftPaneExpansion}>
@@ -48,22 +60,22 @@ const Header = () => {
               value={searchQuery}
               type="text"
               placeholder="Search"
-              //onClick={() => setShowSuggestions(true)}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
-                //setShowSuggestions(true);
+                setShowSuggestions(true);
               }}
             />
             <button>🔍</button>
+            {searchQuery !== "" && showSuggestions && (
+              <div className="searchSuggestions">
+                <ul>
+                  {searchSuggestions?.map((searchSuggestion) => (
+                    <li key={searchSuggestion}>🔍 {searchSuggestion}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-          <div className="searchSuggestions">
-            <ul>
-              {searchSuggestions?.map((searchSuggestion) => (
-                <li key={searchSuggestion}>🔍 {searcsearchSuggestionhQuery}</li>
-              ))}
-            </ul>
-          </div>
-          )}
         </div>
         <div className="header-right-section">
           <button>🔔</button>
