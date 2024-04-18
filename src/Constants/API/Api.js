@@ -11,3 +11,6 @@ export const getVideoApi = (id) => {
     GOOGLE_API
   );
 };
+
+export const searchSuggestionsApi =
+  "http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
