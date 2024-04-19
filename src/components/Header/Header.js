@@ -5,8 +5,8 @@ import ".//Header_module.scss";
 import { setIsleftPaneExpanded } from "../../Utils/store/leftPaneSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { searchSuggestionsApi } from "../../Constants/API/Api";
-import { flushSync } from "react-dom";
 import { addSuggestionCache } from "../../Utils/store/searchSuggestionSlice";
+import { Link, Navigate } from "react-router-dom";
 const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -50,6 +50,7 @@ const Header = () => {
           <div className="yt-hamburger" onClick={handleLeftPaneExpansion}>
             ☰
           </div>
+
           <img className="yt-logo" src={logo} alt="logo" />
         </div>
 

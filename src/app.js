@@ -3,7 +3,7 @@ import "./index.scss";
 import Body from "./components/BodyContainer/Body";
 import appStore from "./Utils/store/appStore";
 import { Provider } from "react-redux";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import VideoContainer from "./components/BodyContainer/VideoContainer/VideoContainer";
 import WatchPage from "./components/WatchPage/WatchPage";
 

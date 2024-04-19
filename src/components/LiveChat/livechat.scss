@@ -1,0 +1,67 @@
+.live {
+  width: 20%;
+  margin: 2rem;
+  margin-left: 1rem;
+  height: 70%;
+  form {
+    margin: 0;
+    height: 7%;
+    margin-top: 5px;
+    input {
+      height: 90%;
+      width: 75%;
+      margin-right: 2%;
+      padding-left: 5px;
+      border-radius: 5px;
+      border: rgb(175, 175, 235) solid 0.5px;
+      &::selection {
+        border: rgb(175, 175, 235) solid 0.5px;
+      }
+    }
+    button {
+      height: 100%;
+      width: 20%;
+      border-radius: 5px;
+      background-color: rgb(175, 175, 235);
+      border: none;
+    }
+  }
+  .live-chat-section {
+    margin-bottom: 0;
+    border: #ccc solid 1px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+    height: 93%;
+    .chat-header {
+      text-align: center;
+      font-size: 2rem;
+      background-color: #ccc;
+    }
+    .live-chat {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+      .livechat-user-logo {
+        border-radius: 50%;
+        width: 1.5rem;
+        height: 1.5rem;
+        margin-left: 10px;
+      }
+      .livechat-user-section {
+        display: flex;
+        flex-direction: row;
+        .livechat-username {
+          font: bold;
+          font-size: 1.2rem;
+          margin-left: 10px;
+        }
+        .livechat-usermessage {
+          font-size: 16px;
+          margin-left: 10px;
+          margin-top: 3px;
+        }
+      }
+    }
+  }
+}
