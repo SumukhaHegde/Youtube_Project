@@ -4,8 +4,8 @@ import IndividualComment from "./IndividualComment";
 
 const CommentsList = ({ comments }) => {
   return comments.map((comment, index) => (
-    <div>
-      <IndividualComment key={index} data={comment} />
+    <div key={index}>
+      <IndividualComment data={comment} />
       <div className="reply-comment">
         <CommentsList comments={comment.replies} />
       </div>
