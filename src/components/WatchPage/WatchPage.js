@@ -2,6 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import "./VideoPlayer.scss";
 import Comments from "../CommentsSection/Comments";
+import LiveChat from "../LiveChat/LiveChat";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();
@@ -20,6 +21,7 @@ const WatchPage = () => {
         ></iframe>
         <Comments />
       </div>
+      <LiveChat />
     </div>
   );
 };
