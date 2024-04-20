@@ -1,37 +1,33 @@
+@import "../../base";
+
 $header-div-width: 10%;
 $search-bar-radius: 20px;
 $search-bar-border-color: #ccc;
-body {
-  margin: 0;
-}
 
 .header {
   display: flex;
   justify-content: space-between;
-  height: 4rem;
+  height: 10vh;
   justify-items: center;
   align-items: center;
   border-bottom: $search-bar-border-color solid 0.1rem;
-  .header-left-section {
+  &-left-section {
     width: $header-div-width;
     display: flex;
     margin-left: 2.2rem;
     justify-items: center;
     align-items: center;
   }
-  .yt-hamburger {
-    width: 1.5rem;
-    height: 100%;
-    cursor: pointer;
-    font-size: 1.5rem;
-  }
+
   .yt-logo {
-    width: 5rem;
-    height: 1.5rem;
+    width: 80px;
+    height: 80px;
     margin-left: 1.5rem;
     cursor: pointer;
+    display: block;
+    object-fit: contain;
   }
-  .header-middle-section {
+  &-middle-section {
     width: 30%;
     height: 60%;
     border: none;
@@ -88,7 +84,7 @@ body {
       cursor: pointer;
     }
   }
-  .header-right-section {
+  &-right-section {
     width: $header-div-width;
     display: flex;
     align-items: center;
@@ -111,6 +107,21 @@ body {
       &:hover {
         background-color: $search-bar-border-color;
       }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-small) {
+  .header {
+    padding: 1rem;
+    form {
+      flex: 1;
+    }
+    yt-hamburger {
+      display: none;
+    }
+    yt-logo {
+      display: none;
     }
   }
 }

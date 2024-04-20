@@ -23,12 +23,12 @@ const LeftPane = () => {
       ) : (
         <div className="left-container">
           <div className="left-pane-items">
-            <Link to="/">
-              <div className="left-pane-home">
-                <img src={homeIcon} />
-                Home
-              </div>
-            </Link>
+            {/* <Link to="/"> */}
+            <div className="left-pane-home">
+              <img src={homeIcon} />
+              Home
+            </div>
+            {/* </Link> */}
             <div className="left-pane-shorts">
               <img src={shorts} />
               Shorts

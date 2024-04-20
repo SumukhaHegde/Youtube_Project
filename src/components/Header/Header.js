@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../Constants/Images/youTubeLogo.png";
 import userIcon from "../../Constants/Images/UserIcon.jpg";
-import ".//Header_module.scss";
+import "./_header.scss";
 import { setIsleftPaneExpanded } from "../../Utils/store/leftPaneSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { searchSuggestionsApi } from "../../Constants/API/Api";
 import { addSuggestionCache } from "../../Utils/store/searchSuggestionSlice";
 import { Link, Navigate } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
+import { AiOutlineSearch } from "react-icons/ai";
+import { MdApps, MdNotifications } from "react-icons/md";
 const Header = () => {
   const [showSuggestions, setShowSuggestions] = useState(true);
   const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -41,21 +44,27 @@ const Header = () => {
 
   return (
     <div
+      className="border border-dark"
       onClick={() => {
         setShowSuggestions(false);
       }}
     >
       <div className="header">
         <div className="header-left-section">
-          <div className="yt-hamburger" onClick={handleLeftPaneExpansion}>
-            ☰
-          </div>
+          <FaBars
+            className="yt-hamburger"
+            onClick={handleLeftPaneExpansion}
+            size={26}
+          ></FaBars>
 
           <img className="yt-logo" src={logo} alt="logo" />
         </div>
 
         <div className="header-middle-section">
-          <div className="search-bar-section">
+          <form
+            className="search-bar-section"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <input
               className="search-bar"
               value={searchQuery}
@@ -66,7 +75,9 @@ const Header = () => {
                 setShowSuggestions(true);
               }}
             />
-            <button>🔍</button>
+            <button>
+              <AiOutlineSearch size={22} />
+            </button>
             {searchQuery !== "" && showSuggestions && (
               <div className="searchSuggestions">
                 <ul>
@@ -76,10 +87,11 @@ const Header = () => {
                 </ul>
               </div>
             )}
-          </div>
+          </form>
         </div>
         <div className="header-right-section">
-          <button>🔔</button>
+          <MdNotifications size={28} />
+          <MdApps size={28} />
           <img className="user-icon" src={userIcon} alt="UserIcon" />
         </div>
       </div>
