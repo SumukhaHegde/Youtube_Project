@@ -1,44 +1,47 @@
 import React from "react";
 import "./LeftPane.scss";
 import "./LeftPaneGuideSection.scss";
-import shorts from "../../../Constants/Images/shorts_icon.png";
-import subscription from "../../../Constants/Images/subscription_icon.jpg";
-import youIcon from "../../../Constants/Images/you_icon.png";
-import homeIcon from "../../../Constants/Images/home-icon.png";
 import LeftPaneGuide from "./LeftPaneGuide";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { MdHome, MdOutlineVideoLibrary, MdSubscriptions } from "react-icons/md";
+import { BiLike } from "react-icons/bi";
 const LeftPane = () => {
   const { isLeftPaneExpanded } = useSelector((store) => store.leftPaneGuide);
   return (
     <div
-      className="left-pane"
-      style={{
-        width: isLeftPaneExpanded ? "10%" : "5%",
-        overflow: isLeftPaneExpanded ? "" : "hidden",
-      }}
+      className={isLeftPaneExpanded ? "left-pane-expanded" : "left-pane"}
+      // style={{
+      //   width: isLeftPaneExpanded ? "15%" : "5%",
+      //   overflow: isLeftPaneExpanded ? "" : "hidden",
+      // }}
     >
       {isLeftPaneExpanded ? (
         <LeftPaneGuide />
       ) : (
-        <div className="left-container">
-          <div className="left-pane-items">
-            {/* <Link to="/"> */}
-            <div className="left-pane-home">
-              <img src={homeIcon} />
+        <div className="left-pane-items">
+          {/* <Link to="/"> */}
+          <div className="left-pane-icon home-icon">
+            <div>
+              <MdHome className="side-bar-icons" />
               Home
             </div>
-            {/* </Link> */}
-            <div className="left-pane-shorts">
-              <img src={shorts} />
-              Shorts
+          </div>
+          {/* </Link> */}
+          <div className="left-pane-icon liked-icon">
+            <div>
+              <BiLike className="side-bar-icons" />
+              <span>Liked videos</span>
             </div>
-            <div className="left-pane-subscription">
-              <img src={subscription} />
-              Subscription
+          </div>
+          <div className="left-pane-icon subs-icon">
+            <div>
+              <MdSubscriptions className="side-bar-icons" />
+              Subscriptions
             </div>
-            <div className="left-pane-you">
-              <img src={youIcon} />
+          </div>
+          <div className="left-pane-icon you-icon">
+            <div>
+              <MdOutlineVideoLibrary className="side-bar-icons" />
               You
             </div>
           </div>

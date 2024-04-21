@@ -1,54 +1,131 @@
-@mixin leftPaneItems() {
+@import "../../../_base.scss";
+
+@mixin left-pane() {
   display: flex;
+  background: $black-primary;
   flex-direction: column;
-  align-items: center;
-  justify-items: center;
-  margin: 1.5rem 0rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-  img {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  font-size: 1rem;
+  height: 90vh;
+  padding-top: 2rem;
 }
-
-::-webkit-scrollbar {
-  width: 50px;
-  height: 50px;
+.left-pane-expanded {
+  @include left-pane();
+  width: 15%;
 }
-
-.left-container {
-  height: 100%;
-  width: 100%;
-  .left-pane-items {
-    height: 50%;
-    width: 100%;
-    a {
-      text-decoration: none;
-      color: black;
+.left-pane {
+  @include left-pane();
+  width: 5%;
+  &-items {
+    .left-pane-icon {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.08);
+      }
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 300px;
+    font-size: 13px;
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
     }
   }
-  .left-pane-home {
-    @include leftPaneItems();
-  }
-  .left-pane-shorts {
-    @include leftPaneItems();
-  }
-  .left-pane-subscription {
-    @include leftPaneItems();
-  }
-  .left-pane-you {
-    @include leftPaneItems();
-  }
 }
 
-.left-pane {
-  height: 100vh;
-  width: 10%;
-  border-right: #ccc solid 0.1rem;
-  overflow: hidden;
-  &:hover {
-    overflow-y: scroll;
+@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-extralarge) {
+  .left-pane {
+    width: 85px;
+    padding-top: 15px;
+    &-items {
+      height: 50vh;
+    }
+    &-icon {
+      font-size: 13px;
+      .side-bar-icons {
+        font-size: 25px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+  .left-pane {
+    width: 75px;
+    padding-top: 15px;
+    &-items {
+      height: 40vh;
+    }
+    &-icon {
+      font-size: 10px;
+      .side-bar-icons {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-small) {
+  .left-pane {
+    width: 55px;
+    padding-top: 10px;
+    &-items {
+      height: 30vh;
+    }
+    &-icon {
+      font-size: 8px;
+      .side-bar-icons {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-mediumsmall) and (max-width: $breakpoint-mobile) {
+  .left-pane {
+    width: 45px;
+    padding-top: 10px;
+    &-items {
+      height: 25vh;
+    }
+    &-icon {
+      font-size: 6px;
+      .side-bar-icons {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-extrasmall) and (max-width: $breakpoint-mediumsmall) {
+  .left-pane {
+    width: 45px;
+    padding-top: 10px;
+    &-items {
+      height: 25vh;
+    }
+    &-icon {
+      font-size: 6px;
+      .side-bar-icons {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media (min-width: 50px) and (max-width: $breakpoint-extrasmall) {
+  .left-pane {
+    width: 45px;
+    padding-top: 10px;
+    &-items {
+      height: 20vh;
+    }
+    &-icon {
+      font-size: 5px;
+      .side-bar-icons {
+        font-size: 10px;
+      }
+    }
   }
 }

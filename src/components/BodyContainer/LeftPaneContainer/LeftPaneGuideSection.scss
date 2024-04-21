@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   section {
-    border-bottom: #ccc solid 0.1rem;
     padding-bottom: 0.2rem;
     display: flex;
     flex-direction: column;
@@ -36,7 +35,7 @@
       height: 1.5rem;
       background-color: transparent;
     }
-    a {
+    span {
       text-decoration: none;
       color: #565656;
       margin: 1rem;

@@ -31,9 +31,9 @@ const App = () => {
     <Provider store={appStore}>
       <>
         <Header />
-        <div className="app-root-container border border-info">
+        <div className="app-root-container">
           <LeftPane />
-          <Container fluid className="app-container border border-warning">
+          <Container fluid className="app-container">
             <Body />
           </Container>
         </div>
