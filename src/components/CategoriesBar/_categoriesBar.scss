@@ -1,0 +1,25 @@
+@import "../../base";
+
+.caregories-bar {
+  display: flex;
+  margin: 1rem 0.5rem;
+  width: 100%;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  scrollbar-width: none;
+
+  span {
+    display: flex;
+    border-radius: 999px;
+    border: 1px solid $text-color;
+    margin-right: 1rem;
+    white-space: nowrap;
+    padding: 0.5rem;
+    &:hover {
+      background-color: hsla(0, 0%, 100%, 0.322);
+    }
+  }
+}
