@@ -14,6 +14,7 @@ const VideoCards = ({ videoDetails }) => {
     <div className="video-card">
       <div className="video-tumbnail-img">
         <img src={tumbnail} alt="tumbnail" />
+        <span>05:10</span>
       </div>
       <div className="video-details">
         <div className="author-chanel-img">
@@ -26,7 +27,8 @@ const VideoCards = ({ videoDetails }) => {
           {title}
           <div className="video-author-details">{channelTitle}</div>
           <div className="video-meta-data">
-            <span>23K views</span> &#8226; 2 years ago<span></span>
+            <span>23K views •</span>
+            <span> 2 years ago</span>
           </div>
         </div>
         <div>

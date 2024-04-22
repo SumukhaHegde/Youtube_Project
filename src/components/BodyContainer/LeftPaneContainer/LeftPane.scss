@@ -1,54 +1,130 @@
-@mixin leftPaneItems() {
+@import "../../../_base.scss";
+
+@mixin left-pane() {
+  display: flex;
+  background: $black-primary;
+  flex-direction: column;
+  height: 90vh;
+  padding-top: 2rem;
+}
+.left-pane-expanded {
+  @include left-pane();
+  width: 15%;
+}
+.left-pane {
+  @include left-pane();
+  width: 5%;
+
+  .left-pane-icon {
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    &:hover {
+      background-color: hsla(0, 0%, 100%, 0.08);
+    }
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-items: center;
-  margin: 1.5rem 0rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-  img {
-    width: 1.5rem;
-    height: 1.5rem;
+  justify-content: space-between;
+  font-size: 13px;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
   }
-  font-size: 1rem;
 }
 
-::-webkit-scrollbar {
-  width: 50px;
-  height: 50px;
-}
-
-.left-container {
-  height: 100%;
-  width: 100%;
-  .left-pane-items {
-    height: 50%;
-    width: 100%;
-    a {
-      text-decoration: none;
-      color: black;
+@media (min-width: $breakpoint-medium) and (max-width: $breakpoint-extralarge) {
+  .left-pane {
+    width: 85px;
+    padding-top: 20px;
+    &-items {
+      gap: 20px;
+    }
+    &-icon {
+      font-size: 13px;
+      .side-bar-icons {
+        font-size: 25px;
+      }
     }
   }
-  .left-pane-home {
-    @include leftPaneItems();
-  }
-  .left-pane-shorts {
-    @include leftPaneItems();
-  }
-  .left-pane-subscription {
-    @include leftPaneItems();
-  }
-  .left-pane-you {
-    @include leftPaneItems();
+}
+@media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+  .left-pane {
+    width: 75px;
+    padding-top: 15px;
+    &-items {
+      gap: 10px;
+    }
+    &-icon {
+      font-size: 10px;
+      .side-bar-icons {
+        font-size: 20px;
+      }
+    }
   }
 }
-
-.left-pane {
-  height: 100vh;
-  width: 10%;
-  border-right: #ccc solid 0.1rem;
-  overflow: hidden;
-  &:hover {
-    overflow-y: scroll;
+@media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-small) {
+  .left-pane {
+    width: 55px;
+    padding-top: 10px;
+    &-items {
+      gap: 5px;
+    }
+    &-icon {
+      font-size: 8px;
+      .side-bar-icons {
+        font-size: 18px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-mediumsmall) and (max-width: $breakpoint-mobile) {
+  .left-pane {
+    width: 45px;
+    padding-top: 10px;
+    &-items {
+      gap: 3px;
+    }
+    &-icon {
+      font-size: 6px;
+      .side-bar-icons {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media (min-width: $breakpoint-extrasmall) and (max-width: $breakpoint-mediumsmall) {
+  .left-pane {
+    width: 45px;
+    padding-top: 10px;
+    &-items {
+      gap: 1px;
+    }
+    &-icon {
+      font-size: 6px;
+      .side-bar-icons {
+        font-size: 13px;
+      }
+    }
+  }
+}
+@media (min-width: 50px) and (max-width: $breakpoint-extrasmall) {
+  .left-pane {
+    width: 45px;
+    padding-top: 10px;
+    &-items {
+      gap: 0;
+    }
+    &-icon {
+      font-size: 5px;
+      .side-bar-icons {
+        font-size: 10px;
+      }
+    }
   }
 }

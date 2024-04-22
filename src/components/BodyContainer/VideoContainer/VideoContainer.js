@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import VideoCards from "./VideoCards";
-import "../body.scss";
 import { getVideosApi } from "../../../Constants/API/Api";
 import { Link } from "react-router-dom";
+import { Col, Container, Row } from "react-bootstrap";
+import CatagoriesBar from "../../CategoriesBar/CatagoriesBar";
 
 const VideoContainer = () => {
   const [videoItems, setVideoItems] = useState([]);
@@ -19,12 +20,22 @@ const VideoContainer = () => {
 
   return (
     <div className="video-container">
-      {videoItems &&
-        videoItems?.map((item) => (
-          <Link to={"/watch?v=" + item.id} key={item.id}>
-            <VideoCards videoDetails={item.snippet} />
-          </Link>
-        ))}
+      <CatagoriesBar />
+      <Row>
+        {
+          videoItems && (
+            // videoItems?.map((item) => (
+            //   <Col lg={3} md={4}>
+            <VideoCards videoDetails={videoItems[0].snippet} />
+          )
+          //   </Col>
+          // ))}
+        }
+      </Row>
+
+      {/* <Link to={"/watch?v=" + item.id} key={item.id}>
+          
+           </Link> */}
     </div>
   );
 };

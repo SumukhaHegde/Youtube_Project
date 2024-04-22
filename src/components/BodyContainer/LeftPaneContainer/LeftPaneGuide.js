@@ -1,121 +1,125 @@
 import React from "react";
-import historyIcon from "../../../Constants/Images/history-icon.png";
-import playListIcon from "../../../Constants/Images/playlistIcon.png";
-import likeIcon from "../../../Constants/Images/like-icon.png";
-import trendingIcon from "../../../Constants/Images/trending-icon.png";
-import musicIcon from "../../../Constants/Images/music-icon.png";
-import moviesIcon from "../../../Constants/Images/movies-icon.png";
-import beautyIcon from "../../../Constants/Images/fashionandbeauty-icon.jpg";
-import shoppingIcon from "../../../Constants/Images/shopping-icon.png";
-import newsIcon from "../../../Constants/Images/news-icon.jpg";
-import podcastIcon from "../../../Constants/Images/podcast-icon.png";
-import sportsIcon from "../../../Constants/Images/sports-icon.jpg";
-import liveIcon from "../../../Constants/Images/live-icon.png";
-import gamingIcon from "../../../Constants/Images/games-icon.png";
-import settingIcon from "../../../Constants/Images/setting-icon.png";
-import reportIcon from "../../../Constants/Images/report-icon.png";
-import shorts from "../../../Constants/Images/shorts_icon.png";
-import subscription from "../../../Constants/Images/subscription_icon.jpg";
-
-import helpIcon from "../../../Constants/Images/help-icon.png";
-
-import feedbackIcon from "../../../Constants/Images/feedback-icon.png";
-import homeIcon from "../../../Constants/Images/home-icon.png";
+import {
+  MdHistory,
+  MdHome,
+  MdOutlineFeedback,
+  MdOutlinePodcasts,
+  MdSubscriptions,
+} from "react-icons/md";
+import { SiYoutubeshorts } from "react-icons/si";
+import { CgPlayList } from "react-icons/cg";
+import { TbThumbUp } from "react-icons/tb";
+import { BiHelpCircle, BiLike, BiShoppingBag } from "react-icons/bi";
+import { BsFire } from "react-icons/bs";
+import {
+  IoGameControllerOutline,
+  IoMusicalNoteOutline,
+  IoNewspaperOutline,
+} from "react-icons/io5";
+import { GiClapperboard, GiHanger } from "react-icons/gi";
+import { TfiCup } from "react-icons/tfi";
+import { HiSignal } from "react-icons/hi2";
+import { AiOutlineFlag, AiOutlineSetting } from "react-icons/ai";
 
 const LeftPaneGuide = () => {
   return (
     <div className="yt-guide-section">
       <section className="yt-guide-home">
         <div>
-          <img src={homeIcon} />
-          <a href="">Home</a>
+          <MdHome size={26} />
+          <span>Home</span>
         </div>
         <div>
-          <img src={shorts} />
-          <a href="">Shorts</a>
+          <SiYoutubeshorts size={26} />
+          <span>Shorts</span>
         </div>
         <div>
-          <img src={subscription} />
-          <a href="">Subscription</a>
+          <MdSubscriptions size={26} />
+          <span>Subscriptions</span>
         </div>
       </section>
+      <hr />
       <section className="yt-guide-You">
         <div className="yt-guide-name">
-          <a href="">You &#62;</a>
+          <span>You &#62;</span>
         </div>
         <div>
-          <img src={playListIcon} />
-          <a href="">Playlists</a>
+          <CgPlayList size={26} />
+          <span>Play lists</span>
         </div>
         <div>
-          <img src={historyIcon} />
-          <a href="">History</a>
+          <MdHistory size={26} />
+          <span>History</span>
         </div>
         <div>
-          <img src={likeIcon} />
-          <a href="">Liked videos</a>
+          <BiLike size={26} />
+          <span>Liked videos</span>
         </div>
       </section>
+      <hr />
+
       <section className="yt-guide-Explore">
         <div className="yt-guide-name">
           <span href="">Explore</span>
         </div>
         <div>
-          <img src={trendingIcon} />
-          <a href="">Trending</a>
+          <BsFire size={26} />
+          <span>Trending</span>
         </div>
         <div>
-          <img src={musicIcon} />
-          <a href="">Music</a>
+          <IoMusicalNoteOutline size={26} />
+          <span>Music</span>
         </div>
         <div>
-          <img src={moviesIcon} /> <a href="">Movies</a>
+          <GiClapperboard size={26} /> <span>Movies</span>
         </div>
         <div>
-          <img src={gamingIcon} />
-          <a href="">Gaming</a>
+          <IoGameControllerOutline size={26} />
+          <span>Gaming</span>
         </div>
         <div>
-          <img src={liveIcon} />
-          <a href="">Live</a>
+          <HiSignal size={26} />
+          <span>Live</span>
         </div>
         <div>
-          <img src={shoppingIcon} />
-          <a href="">Shopping</a>
+          <BiShoppingBag size={26} />
+          <span>Shopping</span>
         </div>
         <div>
-          <img src={sportsIcon} />
-          <a href="">Sports</a>
+          <TfiCup size={26} />
+          <span>Sports</span>
         </div>
         <div>
-          <img src={podcastIcon} />
-          <a href="">Podcasts</a>
+          <MdOutlinePodcasts size={26} />
+          <span>Podcasts</span>
         </div>
         <div>
-          <img src={beautyIcon} />
-          <a href="">Fashion & Beauty</a>
+          <GiHanger size={40} />
+          <span>Fashion & Beauty</span>
         </div>
         <div>
-          <img src={newsIcon} />
-          <a href="">News</a>
+          <IoNewspaperOutline size={26} />
+          <span>News</span>
         </div>
       </section>
+      <hr />
+
       <section className="yt-guide-Setting">
         <div>
-          <img src={settingIcon} />
-          <a href="">Settings</a>
+          <AiOutlineSetting size={26} />
+          <span>Settings</span>
         </div>
         <div>
-          <img src={reportIcon} />
-          <a href="">Report history</a>
+          <AiOutlineFlag size={26} />
+          <span>Report history</span>
         </div>
         <div>
-          <img src={helpIcon} />
-          <a href="">Help</a>
+          <BiHelpCircle size={26} />
+          <span>Help</span>
         </div>
         <div>
-          <img src={feedbackIcon} />
-          <a href="">Send feedback</a>
+          <MdOutlineFeedback size={26} />
+          <span>Send feedback</span>
         </div>
       </section>
     </div>
