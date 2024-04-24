@@ -4,11 +4,9 @@ const VideoCards = ({ videoDetails }) => {
   //console.log(videoDetails);
   const { channelTitle, title, publishedAt, thumbnails } = videoDetails;
   const tumbnail = thumbnails.medium.url;
-  const todayDate = new Date().toISOString().slice(0, 10).replaceAll("-", "");
-  const publishedDate = publishedAt.slice(0, 10).replaceAll("-", "");
-  const numberOfYears = todayDate - publishedDate;
-  // console.log(numberOfYears);
-  // console.log(todayDate);
+  // const todayDate = new Date().toISOString().slice(0, 10).replaceAll("-", "");
+  // const publishedDate = publishedAt.slice(0, 10).replaceAll("-", "");
+  // const numberOfYears = todayDate - publishedDate;
 
   return (
     <div className="video-card">
@@ -27,12 +25,13 @@ const VideoCards = ({ videoDetails }) => {
           <span>{title}</span>
           <div className="video-author-details">{channelTitle}</div>
           <div className="video-meta-data">
-            <span>23K views •</span>
-            <span> 2 years ago</span>
+            <span>23K views</span>
+            <span>•</span>
+            <span>2 years ago</span>
           </div>
         </div>
-        <div>
-          <span className="yt-spec-icon">&#8942;</span>
+        <div className="yt-spec-icon">
+          <span>&#8942;</span>
         </div>
       </div>
     </div>

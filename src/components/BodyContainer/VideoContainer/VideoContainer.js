@@ -21,11 +21,16 @@ const VideoContainer = () => {
   }, []);
 
   return (
-    <div className="video-container">
+    <div>
       <CatagoriesBar />
-      <div className="video-section-container">
-        {videoItems && <VideoRows videoItems={videoItems} />}
-      </div>
+      <Row>
+        {videoItems &&
+          videoItems.map((item) => (
+            <Col lg={3} md={4}>
+              <VideoCards key={item.id} videoDetails={item.snippet} />
+            </Col>
+          ))}
+      </Row>
       {/* <Link to={"/watch?v=" + item.id} key={item.id}>
           
            </Link> */}
