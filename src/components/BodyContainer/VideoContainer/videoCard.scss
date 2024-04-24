@@ -44,7 +44,10 @@
   .video-row {
     display: flex;
     flex-direction: row;
-    flex: 1;
+    .video-row > .video-card {
+      flex: 0 0 calc(100% / var(--no-of-videos-per-row));
+      max-width: calc(100% / var(--no-of-videos-per-row));
+    }
   }
 }
 
@@ -52,7 +55,7 @@
 }
 @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
   .video-section-container {
-    background-color: red;
+    --no-of-videos-per-row: 3;
   }
 }
 @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
