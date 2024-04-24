@@ -4,6 +4,8 @@ import { getVideosApi } from "../../../Constants/API/Api";
 import { Link } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
 import CatagoriesBar from "../../CategoriesBar/CatagoriesBar";
+import "./videoCard.scss";
+import VideoRows from "./VideoRows";
 
 const VideoContainer = () => {
   const [videoItems, setVideoItems] = useState([]);
@@ -21,18 +23,9 @@ const VideoContainer = () => {
   return (
     <div className="video-container">
       <CatagoriesBar />
-      <Row>
-        {
-          videoItems && (
-            // videoItems?.map((item) => (
-            //   <Col lg={3} md={4}>
-            <VideoCards videoDetails={videoItems[0].snippet} />
-          )
-          //   </Col>
-          // ))}
-        }
-      </Row>
-
+      <div className="video-section-container">
+        {videoItems && <VideoRows videoItems={videoItems} />}
+      </div>
       {/* <Link to={"/watch?v=" + item.id} key={item.id}>
           
            </Link> */}

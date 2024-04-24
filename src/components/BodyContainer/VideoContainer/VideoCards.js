@@ -24,7 +24,7 @@ const VideoCards = ({ videoDetails }) => {
           />
         </div>
         <div className="video-title">
-          {title}
+          <span>{title}</span>
           <div className="video-author-details">{channelTitle}</div>
           <div className="video-meta-data">
             <span>23K views •</span>
