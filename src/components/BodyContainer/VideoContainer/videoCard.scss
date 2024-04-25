@@ -1,14 +1,33 @@
 @import "../../../_base.scss";
 
 .video-card {
-  margin: 0.001rem;
-  border: white solid 1px;
-  width: 350px !important;
+  margin: 1rem;
+  cursor: pointer;
+  .video-details {
+    display: flex;
+    margin-top: 0.5rem;
+    .video-meta-data {
+      display: flex;
+      gap: 0.2rem;
+    }
+    .author-chanel-img {
+      flex: 0.1;
+    }
+    .video-title {
+      flex: 0.85;
+    }
+    .yt-spec-icon {
+      flex: 0.05;
+      text-align: center;
+      font-size: 20px;
+    }
+  }
   .video-tumbnail-img {
     position: relative;
     img {
       border-radius: 10px;
-
+      min-width: 5rem;
+      min-height: 3rem;
       width: 100%;
     }
     span {
@@ -24,8 +43,8 @@
   .author-chanel-img {
     img {
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 2.2rem;
+      height: 2.2rem;
     }
   }
   .video-title {
@@ -37,34 +56,33 @@
     }
   }
 }
-.video-section-container {
-  --no-of-videos-per-row: 5;
-  display: flex;
-  flex-wrap: wrap;
-  .video-row {
-    display: flex;
-    flex-direction: row;
-    .video-row > .video-card {
-      flex: 0 0 calc(100% / var(--no-of-videos-per-row));
-      max-width: calc(100% / var(--no-of-videos-per-row));
-    }
-  }
-}
 
 @media (min-width: $breakpoint-large) and (max-width: $breakpoint-extralarge) {
+  .video-title {
+    font-size: 1rem;
+  }
 }
 @media (min-width: $breakpoint-medium) and (max-width: $breakpoint-large) {
-  .video-section-container {
-    --no-of-videos-per-row: 3;
+  .video-title {
+    font-size: 0.9rem;
   }
 }
 @media (min-width: $breakpoint-small) and (max-width: $breakpoint-medium) {
+  .video-title {
+    font-size: 0.8rem;
+  }
 }
 @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-small) {
 }
 @media (min-width: $breakpoint-mediumsmall) and (max-width: $breakpoint-mobile) {
 }
 @media (min-width: $breakpoint-extrasmall) and (max-width: $breakpoint-mediumsmall) {
+  .video-title {
+    font-size: 0.6rem;
+  }
 }
 @media (min-width: 50px) and (max-width: $breakpoint-extrasmall) {
+  .video-title {
+    font-size: 0.5rem;
+  }
 }

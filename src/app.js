@@ -8,35 +8,37 @@ import VideoContainer from "./components/BodyContainer/VideoContainer/VideoConta
 import WatchPage from "./components/WatchPage/WatchPage";
 import LeftPane from "./components/BodyContainer/LeftPaneContainer/LeftPane";
 import { Container } from "react-bootstrap";
+import Login from "./components/Login/Login";
 
 const App = () => {
-  // const appRouter = createBrowserRouter([
-  //   {
-  //     path: "/",
-  //     element: <Body />,
-  //     children: [
-  //       {
-  //         path: "/",
-  //         element: <VideoContainer />,
-  //       },
-  //       {
-  //         path: "/watch",
-  //         element: <WatchPage />,
-  //       },
-  //     ],
-  //   },
-  // ]);
+  const appRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <Body />,
+      children: [
+        {
+          path: "/",
+          element: <VideoContainer />,
+        },
+        {
+          path: "/watch",
+          element: <WatchPage />,
+        },
+      ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+  ]);
 
   return (
     <Provider store={appStore}>
       <>
-        <Header />
-        <div className="app-root-container">
-          <LeftPane />
-          <Container fluid className="app-container">
-            <Body />
-          </Container>
-        </div>
+        <RouterProvider router={appRouter}>
+          <Login />
+          <Body />
+        </RouterProvider>
       </>
     </Provider>
   );
