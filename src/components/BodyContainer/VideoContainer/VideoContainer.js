@@ -26,7 +26,7 @@ const VideoContainer = () => {
       <Row>
         {videoItems &&
           videoItems.map((item) => (
-            <Col lg={3} md={4}>
+            <Col lg={3} md={4} sm={5}>
               <VideoCards key={item.id} videoDetails={item.snippet} />
             </Col>
           ))}
