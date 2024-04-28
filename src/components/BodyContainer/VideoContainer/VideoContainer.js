@@ -1,33 +1,44 @@
 import React, { useEffect, useState } from "react";
 import VideoCards from "./VideoCards";
-import { getVideosApi } from "../../../Constants/API/Api";
-import { Link } from "react-router-dom";
+import { fetchData, getVideosApi } from "../../../Constants/API/Api";
 import { Col, Container, Row } from "react-bootstrap";
 import CatagoriesBar from "../../CategoriesBar/CatagoriesBar";
 import "./videoCard.scss";
-import VideoRows from "./VideoRows";
+import { useDispatch, useSelector } from "react-redux";
+import { addVideosList } from "../../../Utils/store/videoItemsSlice";
 
 const VideoContainer = () => {
-  const [videoItems, setVideoItems] = useState([]);
+  const dispatch = useDispatch();
+  //const videoItems = useSelector((store) => store.containerVideos.videos);
+  const [items, setItems] = useState(null);
   const getVideos = async () => {
-    const videoData = await fetch(getVideosApi);
-    const videoJsonData = await videoData.json();
+    const videoJsonData = await fetchData.get("/videos", {
+      params: {
+        part: "snippet,contentDetails,statistics",
+        chart: "mostPopular",
+        regionCode: "IN",
+        pageToken: "",
+        maxResults: 20,
+      },
+    });
+
+    console.log(videoJsonData);
     const items = videoJsonData?.items;
-    setVideoItems(items);
+    dispatch(addVideosList(items));
+    setItems(items);
   };
 
   useEffect(() => {
     getVideos();
   }, []);
-
   return (
     <div>
       <CatagoriesBar />
       <Row>
-        {videoItems &&
-          videoItems.map((item) => (
-            <Col lg={3} md={4} sm={5}>
-              <VideoCards key={item.id} videoDetails={item.snippet} />
+        {items &&
+          items?.map((item) => (
+            <Col key={item.id} lg={3} md={4} sm={5}>
+              <VideoCards videoDetails={item} />
             </Col>
           ))}
       </Row>
