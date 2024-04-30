@@ -51,7 +51,7 @@ const VideoContainer = () => {
         next={getData}
         hasMore={true}
         loader={
-          <div className="spinner-border text-danger d-bloxk mx-auto"></div>
+          <div className="spinner-border text-danger d-block mx-auto"></div>
         }
         className="row"
       >
