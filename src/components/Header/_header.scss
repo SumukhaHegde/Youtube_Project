@@ -10,8 +10,12 @@ $search-bar-border-color: #ccc;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 56px;
+  height: 10vh;
+  position: fixed;
+  top: 0;
   flex: 1;
+  background-color: $black-primary;
+  z-index: 999;
   &-left-section {
     display: flex;
     flex: 0.1;

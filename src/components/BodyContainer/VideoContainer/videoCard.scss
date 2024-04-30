@@ -35,9 +35,11 @@
       bottom: 8px;
       right: 8px;
       background: $black-primary;
-      padding: 0.1rem;
+      padding: 0.1rem 0.4rem;
       font-size: 15px;
       color: white;
+      border-radius: 5px;
+      text-align: center;
     }
   }
   .author-chanel-img {
