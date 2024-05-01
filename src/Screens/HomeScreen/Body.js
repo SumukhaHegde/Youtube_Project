@@ -12,7 +12,7 @@ const Body = () => {
       <Header />
       <div className="app-root-container">
         <LeftPane />
-        <Container fluid className="app-container">
+        <Container fluid>
           <div className="body-container">
             <Outlet />
           </div>

@@ -5,6 +5,8 @@
   margin: 1rem 0.5rem;
   width: 100%;
   overflow-x: scroll;
+  padding: 0.5rem 0;
+  justify-content: center;
   &::-webkit-scrollbar {
     width: 0px;
   }
