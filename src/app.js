@@ -9,6 +9,7 @@ import WatchPage from "./components/WatchPage/WatchPage";
 import LeftPane from "./components/BodyContainer/LeftPaneContainer/LeftPane";
 import { Container } from "react-bootstrap";
 import Login from "./components/Login/Login";
+import WatchScreen from "./components/WatchScreen/WatchScreen";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -21,8 +22,8 @@ const App = () => {
           element: <VideoContainer />,
         },
         {
-          path: "/watch",
-          element: <WatchPage />,
+          path: "/watch/:key",
+          element: <WatchScreen />,
         },
       ],
     },

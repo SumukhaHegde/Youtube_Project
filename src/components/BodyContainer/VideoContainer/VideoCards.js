@@ -3,10 +3,13 @@ import "./videoCard.scss";
 import moment from "moment";
 import numeral from "numeral";
 import { fetchData } from "../../../Constants/API/Api";
+import Skeleton from "react-loading-skeleton";
+
 const VideoCards = ({ videoDetails }) => {
   const [views, setViews] = useState(null);
   const [videoDuration, setVideoDuration] = useState(null);
   const [channelImg, setChannelImg] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     id,
@@ -55,7 +58,7 @@ const VideoCards = ({ videoDetails }) => {
     getVideoDetails();
   }, []);
 
-  return (
+  return isLoading ? (
     <div className="video-card">
       <div className="video-tumbnail-img">
         <img src={tumbnail} alt="tumbnail" />
@@ -83,6 +86,8 @@ const VideoCards = ({ videoDetails }) => {
         </div>
       </div>
     </div>
+  ) : (
+    <Skeleton />
   );
 };
 
