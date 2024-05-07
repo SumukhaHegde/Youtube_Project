@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import VideoCards from "./VideoCards";
-import {
-  fetchData,
-  getAllVideos,
-  getVideosApi,
-  getVidesByCategories,
-} from "../../../Constants/API/Api";
-import { Col, Container, Row } from "react-bootstrap";
+import { getAllVideos, getVidesByCategories } from "../../../Constants/API/Api";
+import { Col, Row } from "react-bootstrap";
 import CatagoriesBar from "../../CategoriesBar/CatagoriesBar";
 import "./videoCard.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideosList } from "../../../Utils/store/videoItemsSlice";
-import InfiniteScroll from "react-infinite-scroll-component";
+import SkeletonCard from "../../Skeleton/SkeletonCard";
 
 const VideoContainer = () => {
   const dispatch = useDispatch();
@@ -19,17 +14,24 @@ const VideoContainer = () => {
     (store) => store.containerVideos.videosList
   );
 
-  const getVideos = async () => {
-    const videoJsonData = await getAllVideos(nextPageToken);
-
+  const addvideosListToReducer = (videoJsonData) => {
     const items = videoJsonData?.data?.items;
     dispatch(
       addVideosList({
-        videos: activeCategory === "All" ? [...videos, ...items] : items,
+        videos: [...videos, ...items],
         nextPageToken: videoJsonData.data.nextPageToken,
-        activeCategory: "All",
+        activeCategory: activeCategory,
       })
     );
+  };
+
+  const getVideos = async () => {
+    const videoJsonData = await getAllVideos(nextPageToken);
+    addvideosListToReducer(videoJsonData);
+  };
+  const getVidesByCategory = async (activeCategory) => {
+    const videoJsonData = await getVidesByCategories(activeCategory);
+    addvideosListToReducer(videoJsonData);
   };
 
   useEffect(() => {
@@ -39,15 +41,29 @@ const VideoContainer = () => {
   const getData = () => {
     if (activeCategory === "All") getVideos();
     else {
-      getVidesByCategories(activeCategory);
+      getVidesByCategory(activeCategory);
     }
   };
   return (
     <div>
       <CatagoriesBar />
-
-      <InfiniteScroll
-        dataLength={videos ? videos.length : 0}
+      <Row>
+        {/* {"" !== "1"
+          ? [...Array(20)].map(() => (
+              <Col lg={3} md={4}>
+                <SkeletonCard />
+              </Col>
+            )) */}
+        {videos &&
+          videos?.map((item) => (
+            <Col key={item.id} lg={3} md={4}>
+              <VideoCards videoDetails={item} />
+            </Col>
+          ))}
+      </Row>
+      {/* //Todo: InfiniteScroll code */}
+      {/* <InfiniteScroll
+        dataLength={videos && videos.length}
         next={getData}
         hasMore={true}
         loader={
@@ -61,7 +77,7 @@ const VideoContainer = () => {
               <VideoCards videoDetails={item} />
             </Col>
           ))}
-      </InfiniteScroll>
+      </InfiniteScroll> */}
       {/* <Link to={"/watch?v=" + item.id} key={item.id}>
           
            </Link> */}

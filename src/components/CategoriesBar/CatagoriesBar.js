@@ -11,7 +11,6 @@ import { addVideosList } from "../../Utils/store/videoItemsSlice";
 
 const CatagoriesBar = () => {
   const dispatch = useDispatch();
-  const [activeElement, setActiveElement] = useState([]);
   const { videos, activeCategory } = useSelector(
     (store) => store.containerVideos.videosList
   );
@@ -36,7 +35,6 @@ const CatagoriesBar = () => {
   ];
 
   const handleClick = async (category) => {
-    setActiveElement(category);
     const {
       data: { items, nextPageToken },
     } = await getVidesByCategories(category);
@@ -45,7 +43,7 @@ const CatagoriesBar = () => {
       addVideosList({
         videos: activeCategory === category ? [...videos, ...items] : items,
         nextPageToken: nextPageToken,
-        activeCategory: activeElement,
+        activeCategory: category,
       })
     );
   };

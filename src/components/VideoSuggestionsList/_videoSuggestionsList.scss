@@ -1,0 +1,54 @@
+@import "../../_base.scss";
+.video-suggestion {
+  margin-bottom: 1rem;
+  border-bottom: 0.3px solid $border-color;
+  cursor: pointer;
+  .video-thumbnai-section {
+    position: relative;
+    text-align: center;
+    .video-thumbnail {
+      width: 100%;
+      height: 90px;
+    }
+    span {
+      position: absolute;
+      bottom: 0.1rem;
+      right: 1rem;
+      background: #080808ec;
+      border-radius: 3px;
+      padding: 0.2rem;
+    }
+  }
+
+  .video-details-section {
+    .video-title {
+      font-size: 1rem;
+      color: #fff;
+      letter-spacing: 0.3px;
+      @include lineBreak(1);
+    }
+    .video-details {
+      margin-top: 0.2rem;
+      .views-icon {
+        margin-bottom: 0.2rem;
+        font-size: 15px;
+      }
+      span {
+        align-items: center;
+      }
+    }
+    .channel-name {
+      img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-right: 0.5rem;
+        cursor: pointer;
+      }
+      p {
+        font-size: 0.9rem;
+        @include lineBreak(1);
+      }
+    }
+  }
+}
