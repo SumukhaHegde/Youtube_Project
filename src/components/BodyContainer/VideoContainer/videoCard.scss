@@ -51,10 +51,7 @@
   }
   .video-title {
     span {
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
+      @include lineBreak(2);
     }
   }
 }

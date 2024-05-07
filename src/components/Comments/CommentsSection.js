@@ -23,7 +23,9 @@ const CommentsSection = () => {
           <button className="comment-btn">Add Comment</button>
         </form>
       </div>
-      <Comments />
+      {[...Array(10)].map(() => (
+        <Comments />
+      ))}
     </div>
   );
 };
