@@ -4,14 +4,17 @@ import "./_watchScreen.scss";
 import VideoMetaData from "../WatchScreenVideoDetails/VideoMetaData";
 import VideoSuggestionsList from "../VideoSuggestionsList/VideoSuggestionsList";
 import CommentsSection from "../Comments/CommentsSection";
+import { useParams } from "react-router-dom";
 
 const WatchScreen = () => {
+  const params = useParams();
+  const videoId = params.key;
   return (
-    <Row>
+    <Row style={{ marginTop: "1rem" }}>
       <Col lg={9}>
         <div className="watch-screen">
           <iframe
-            src="https://www.youtube.com/embed/0Po2g_qQwlk?si=RTIigwdg_S5SSBG9"
+            src={`https://www.youtube.com/embed/${videoId}`}
             frameBorder="0"
             allowFullScreen
             title="This is Sample"

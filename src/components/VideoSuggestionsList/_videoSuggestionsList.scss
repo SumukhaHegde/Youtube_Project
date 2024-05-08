@@ -6,6 +6,7 @@
   .video-thumbnai-section {
     position: relative;
     text-align: center;
+    padding: 0;
     .video-thumbnail {
       width: 100%;
       height: 90px;
@@ -13,7 +14,7 @@
     span {
       position: absolute;
       bottom: 0.1rem;
-      right: 1rem;
+      right: 0.3rem;
       background: #080808ec;
       border-radius: 3px;
       padding: 0.2rem;

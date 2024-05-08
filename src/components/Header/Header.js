@@ -6,7 +6,7 @@ import { setIsleftPaneExpanded } from "../../Utils/store/leftPaneSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { searchSuggestionsApi } from "../../Constants/API/Api";
 import { addSuggestionCache } from "../../Utils/store/searchSuggestionSlice";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineSearch } from "react-icons/ai";
 import { MdApps, MdNotifications } from "react-icons/md";
@@ -17,6 +17,7 @@ const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
   const suggestionCache = useSelector((store) => store.searchSuggestion);
+  const navigate = useNavigate();
 
   const handleLeftPaneExpansion = () => {
     dispatch(setIsleftPaneExpanded());
@@ -57,7 +58,12 @@ const Header = () => {
             onClick={handleLeftPaneExpansion}
           ></FaBars>
         </div>
-        <div className="ytlogo">
+        <div
+          className="ytlogo"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           <img className="yt-logo" src={logo} alt="logo" />
           <ImYoutube2 className="header-logo-icon" />
         </div>
