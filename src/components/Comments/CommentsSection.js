@@ -23,8 +23,8 @@ const CommentsSection = () => {
           <button className="comment-btn">Add Comment</button>
         </form>
       </div>
-      {[...Array(10)].map(() => (
-        <Comments />
+      {[...Array(10)].map((index) => (
+        <Comments key={index} />
       ))}
     </div>
   );

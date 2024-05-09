@@ -29,6 +29,30 @@ export const getVidesByCategories = async (keyword) => {
   });
 };
 
+export const getVideoDetailsByVideoId = async (id) => {
+  return await fetchData("/videos", {
+    params: {
+      part: ["snippet", "statistics"],
+      id: id,
+    },
+    paramsSerializer: {
+      indexes: null,
+    },
+  });
+};
+
+export const getChannelDetailsByChannelId = async (id) => {
+  return await fetchData("/channels", {
+    params: {
+      part: ["snippet", "contentDetails", "statistics"],
+      id: id,
+    },
+    paramsSerializer: {
+      indexes: null,
+    },
+  });
+};
+
 export const getChannelId = (channelId) => {
   return (
     `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}` +

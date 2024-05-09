@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import "./_watchScreen.scss";
 import VideoMetaData from "../WatchScreenVideoDetails/VideoMetaData";
 import VideoSuggestionsList from "../VideoSuggestionsList/VideoSuggestionsList";
 import CommentsSection from "../Comments/CommentsSection";
 import { useParams } from "react-router-dom";
+import { getVideoDetailsByVideoId } from "../../Constants/API/Api";
 
 const WatchScreen = () => {
   const params = useParams();
   const videoId = params.key;
+  const [videoDetails, setVideoDetails] = useState(null);
+
+  const getVideoDetailsById = async () => {
+    console.log("called");
+    const { data } = await getVideoDetailsByVideoId(videoId);
+    const details = data.items[0];
+    console.log(details);
+    setVideoDetails(details);
+  };
+
+  useEffect(() => {
+    console.log("useeffect called");
+    getVideoDetailsById();
+  }, [videoId]);
   return (
     <Row style={{ marginTop: "1rem" }}>
       <Col lg={9}>
@@ -21,13 +36,15 @@ const WatchScreen = () => {
             width="100%"
             height="100%"
           ></iframe>
-          <VideoMetaData />
+          {videoDetails && (
+            <VideoMetaData videoDetails={videoDetails} videoId={videoId} />
+          )}
           <CommentsSection />
         </div>
       </Col>
       <Col lg={3}>
-        {[...Array(10)].map(() => (
-          <VideoSuggestionsList />
+        {[...Array(10)].map((index) => (
+          <VideoSuggestionsList key={index} />
         ))}{" "}
       </Col>
     </Row>
