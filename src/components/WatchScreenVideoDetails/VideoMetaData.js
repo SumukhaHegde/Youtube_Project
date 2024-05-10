@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./_videoMetaData.scss";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import numeral from "numeral";
-import { getChannelDetailsByChannelId } from "../../Constants/API/Api";
+import {
+  getChannelDetailsByChannelId,
+  getChannelSubscriptionStatus,
+} from "../../Constants/API/Api";
 
 const VideoMetaData = ({ videoDetails, videoId }) => {
   const [channelDetails, setChannelDetails] = useState(null);
@@ -14,12 +17,21 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
   const getChannelDetailsById = async () => {
     const { data } = await getChannelDetailsByChannelId(channelId);
     const channelDetails = data.items[0];
-    console.log(channelDetails);
     setChannelDetails(channelDetails);
   };
 
+  //Todo - User has to be loggedin using his gmail account: hence will create this code once implemented with the login with google account
+  // const getSubscriptionStatus = async () => {
+  //   const subscriptionStatusData = await getChannelSubscriptionStatus(
+  //     channelId
+  //   );
+  //   console.log(subscriptionStatusData);
+  //   // const subscriptionStatus = subscriptionStatusData.data.items.length !== 0 (if item.length !=0 then user is subscribed)
+  // };
+
   useEffect(() => {
     getChannelDetailsById();
+    // getSubscriptionStatus();
   }, [videoId]);
   return (
     channelDetails && (

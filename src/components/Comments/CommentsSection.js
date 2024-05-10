@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./_commentsSection.scss";
 import Comments from "./Comments";
+import { getCommentsForVideo } from "../../Constants/API/Api";
+import { useDispatch, useSelector } from "react-redux";
+import { setCommentsList } from "../../Utils/store/commentsListSlice";
 
-const CommentsSection = () => {
+const CommentsSection = ({ videoId }) => {
+  const dispatch = useDispatch();
+  const comments = useSelector((store) => store.commentsList.comments);
+
+  const _comments = comments?.map(
+    (comment) => comment.snippet.topLevelComment.snippet
+  );
+  const getCommentsByVideoId = async () => {
+    const { data } = await getCommentsForVideo(videoId);
+    dispatch(setCommentsList(data.items));
+  };
+
+  useEffect(() => {
+    getCommentsByVideoId();
+  });
   return (
     <div className="comments-section">
       <div className="total-comments">
@@ -23,8 +40,8 @@ const CommentsSection = () => {
           <button className="comment-btn">Add Comment</button>
         </form>
       </div>
-      {[...Array(10)].map((index) => (
-        <Comments key={index} />
+      {_comments?.map((comment, index) => (
+        <Comments comment={comment} key={index} />
       ))}
     </div>
   );

@@ -13,7 +13,6 @@ const WatchScreen = () => {
   const [videoDetails, setVideoDetails] = useState(null);
 
   const getVideoDetailsById = async () => {
-    console.log("called");
     const { data } = await getVideoDetailsByVideoId(videoId);
     const details = data.items[0];
     console.log(details);
@@ -21,7 +20,6 @@ const WatchScreen = () => {
   };
 
   useEffect(() => {
-    console.log("useeffect called");
     getVideoDetailsById();
   }, [videoId]);
   return (
@@ -39,7 +37,7 @@ const WatchScreen = () => {
           {videoDetails && (
             <VideoMetaData videoDetails={videoDetails} videoId={videoId} />
           )}
-          <CommentsSection />
+          <CommentsSection videoId={videoId} />
         </div>
       </Col>
       <Col lg={3}>
