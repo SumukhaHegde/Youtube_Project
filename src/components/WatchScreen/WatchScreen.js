@@ -6,11 +6,15 @@ import VideoSuggestionsList from "../VideoSuggestionsList/VideoSuggestionsList";
 import CommentsSection from "../Comments/CommentsSection";
 import { useParams } from "react-router-dom";
 import { getVideoDetailsByVideoId } from "../../Constants/API/Api";
+import { useSelector } from "react-redux";
 
 const WatchScreen = () => {
   const params = useParams();
   const videoId = params.key;
   const [videoDetails, setVideoDetails] = useState(null);
+  const videos = useSelector(
+    (store) => store.containerVideos.videosList.videos
+  );
 
   const getVideoDetailsById = async () => {
     const { data } = await getVideoDetailsByVideoId(videoId);
@@ -41,7 +45,7 @@ const WatchScreen = () => {
         </div>
       </Col>
       <Col lg={3}>
-        {[...Array(10)].map((index) => (
+        {videos.map((index) => (
           <VideoSuggestionsList key={index} />
         ))}{" "}
       </Col>
