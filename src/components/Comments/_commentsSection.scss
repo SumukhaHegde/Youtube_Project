@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  overflow-y: scroll;
 
   .total-comments {
     width: 100%;
@@ -15,6 +16,8 @@
     display: flex;
     gap: 20px;
     padding-left: 10px;
+    margin-bottom: 1rem;
+
     .user-profile {
       max-width: 10%;
       width: 35px;
@@ -29,6 +32,11 @@
         background: transparent;
         border-bottom: solid 1px #cccccc73;
         padding: 0.5rem;
+        color: white;
+        font-weight: 300;
+        &:focus {
+          outline: none;
+        }
       }
       .comment-btn {
         border: none;

@@ -1,22 +1,24 @@
 import React from "react";
 import moment from "moment";
 
-const Comments = () => {
+const Comments = ({ comment }) => {
+  const {
+    authorDisplayName,
+    authorProfileImageUrl,
+    textOriginal,
+    publishedAt,
+  } = comment;
   return (
     <div className="video-comments">
-      <img
-        className="user-profile"
-        src="https://yt3.ggpht.com/yti/ANjgQV-7v3OAFwuOuuyI0r48ZKgq4yfkhxi309vivuekIg=s88-c-k-c0x00ffffff-no-rj-mo"
-        alt="user"
-      />
+      <img className="user-profile" src={authorProfileImageUrl} alt="user" />
       <div className="comments">
         <div>
-          <span className="user-name">Sumukha </span>
+          <span className="user-name">{authorDisplayName} </span>
           <span className="comment-published">
-            • {moment("2020-05-05").fromNow()}
+            • {moment(publishedAt).fromNow()}
           </span>
         </div>
-        <div className="user-comment">Nice video Dude</div>
+        <div className="user-comment">{textOriginal}</div>
       </div>
     </div>
   );

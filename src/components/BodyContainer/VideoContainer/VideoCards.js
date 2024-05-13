@@ -4,12 +4,14 @@ import moment from "moment";
 import numeral from "numeral";
 import { fetchData } from "../../../Constants/API/Api";
 import Skeleton from "react-loading-skeleton";
+import { useNavigate } from "react-router-dom";
 
 const VideoCards = ({ videoDetails }) => {
   const [views, setViews] = useState(null);
   const [videoDuration, setVideoDuration] = useState(null);
   const [channelImg, setChannelImg] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   const {
     id,
@@ -58,8 +60,12 @@ const VideoCards = ({ videoDetails }) => {
     getVideoDetails();
   }, []);
 
+  const handleNavigateToWatchPage = () => {
+    navigate(`/watch/${videoId}`);
+  };
+
   return isLoading ? (
-    <div className="video-card">
+    <div className="video-card" onClick={handleNavigateToWatchPage}>
       <div className="video-tumbnail-img">
         <img src={tumbnail} alt="tumbnail" />
         <span>{videoDuration}</span>
