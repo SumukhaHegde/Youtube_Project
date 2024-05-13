@@ -45,8 +45,8 @@ const WatchScreen = () => {
         </div>
       </Col>
       <Col lg={3}>
-        {videos.map((index) => (
-          <VideoSuggestionsList key={index} />
+        {videos.map((video, index) => (
+          <VideoSuggestionsList key={index} videoDetails={video} />
         ))}{" "}
       </Col>
     </Row>
