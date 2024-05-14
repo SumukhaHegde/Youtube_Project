@@ -4,9 +4,12 @@ import moment from "moment";
 import { Col, Row } from "react-bootstrap";
 import numeral from "numeral";
 import { IoEyeSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const VideoSuggestionsList = ({ videoDetails }) => {
+  const navigate = useNavigate();
   const {
+    id,
     snippet: { title, channelTitle, publishedAt, thumbnails },
     contentDetails: { duration },
     statistics: { viewCount },
@@ -15,8 +18,12 @@ const VideoSuggestionsList = ({ videoDetails }) => {
   const _duration = moment.utc(seconds * 1000).format("mm:ss");
   const published = moment(publishedAt).fromNow();
 
+  const handleVideoNavigation = () => {
+    navigate(`/watch/${id}`);
+  };
+
   return (
-    <Row className="video-suggestion">
+    <Row className="video-suggestion" onClick={handleVideoNavigation}>
       <Col xs={6} md={4} className="video-thumbnai-section">
         <img className="video-thumbnail" src={thumbnails.medium.url} alt="" />
         <span>{_duration}</span>
