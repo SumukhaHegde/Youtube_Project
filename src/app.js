@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import VideoContainer from "./components/BodyContainer/VideoContainer/VideoContainer";
 import Login from "./components/Login/Login";
 import WatchScreen from "./components/WatchScreen/WatchScreen";
+import LikedVideos from "./components/LikedDislikedVideos/LikedVideos";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -20,6 +21,10 @@ const App = () => {
         {
           path: "/watch/:key",
           element: <WatchScreen />,
+        },
+        {
+          path: "/likedvideos",
+          element: <LikedVideos />,
         },
       ],
     },
