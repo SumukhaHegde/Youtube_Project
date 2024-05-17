@@ -5,6 +5,7 @@ import chatSlice from "./chatSlice";
 import loginLogoutSlice from "./loginLogoutSlice";
 import videoItemsSlice from "./videoItemsSlice";
 import commentsListSlice from "./commentsListSlice";
+import likedVideosListSlice from "./likedVideosListSlice";
 const appStore = configureStore({
   reducer: {
     leftPaneGuide: leftPaneSlice,
@@ -13,6 +14,7 @@ const appStore = configureStore({
     loginLogout: loginLogoutSlice,
     containerVideos: videoItemsSlice,
     commentsList: commentsListSlice,
+    likedVideosList: likedVideosListSlice,
   },
 });
 

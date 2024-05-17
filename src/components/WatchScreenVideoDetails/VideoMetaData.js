@@ -6,9 +6,12 @@ import {
   getChannelDetailsByChannelId,
   getChannelSubscriptionStatus,
 } from "../../Constants/API/Api";
+import { useDispatch } from "react-redux";
+import { addLikedVideos } from "../../Utils/store/likedVideosListSlice";
 
 const VideoMetaData = ({ videoDetails, videoId }) => {
   const [channelDetails, setChannelDetails] = useState(null);
+  const dispatch = useDispatch();
   const {
     snippet: { channelId, channelTitle, description, publishedAt, title },
     statistics: { likeCount, viewCount },
@@ -18,6 +21,10 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
     const { data } = await getChannelDetailsByChannelId(channelId);
     const channelDetails = data.items[0];
     setChannelDetails(channelDetails);
+  };
+
+  const handleLikeVideo = () => {
+    dispatch(addLikedVideos(videoDetails));
   };
 
   //Todo - User has to be loggedin using his gmail account: hence will create this code once implemented with the login with google account
@@ -61,7 +68,7 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
             <button className="subscribe-btn">Subscribe</button>
           </div>
           <div className="video-likes-dislikes">
-            <div className="video-likes">
+            <div className="video-likes" onClick={handleLikeVideo}>
               <IoMdThumbsUp />
               <span>{numeral(likeCount).format("0.a")}</span>
             </div>

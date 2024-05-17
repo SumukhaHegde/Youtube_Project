@@ -5,8 +5,14 @@ import LeftPaneGuide from "./LeftPaneGuide";
 import { useSelector } from "react-redux";
 import { MdHome, MdOutlineVideoLibrary, MdSubscriptions } from "react-icons/md";
 import { BiLike } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 const LeftPane = () => {
   const { isLeftPaneExpanded } = useSelector((store) => store.leftPaneGuide);
+  const navigate = useNavigate();
+
+  const handleLikeVideoPage = () => {
+    navigate("/likedvideos");
+  };
   return (
     <div
       className={isLeftPaneExpanded ? "left-pane-expanded" : "left-pane"}
@@ -27,7 +33,10 @@ const LeftPane = () => {
             </div>
           </div>
           {/* </Link> */}
-          <div className="left-pane-icon liked-icon">
+          <div
+            className="left-pane-icon liked-icon"
+            onClick={handleLikeVideoPage}
+          >
             <div>
               <BiLike className="side-bar-icons" />
               <span>Liked videos</span>

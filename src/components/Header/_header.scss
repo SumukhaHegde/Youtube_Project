@@ -77,6 +77,16 @@ $search-bar-border-color: #ccc;
           outline: none;
         }
       }
+
+      .searchSuggestions {
+        position: fixed;
+        top: 50px;
+        width: 38%;
+        background-color: $black-primary;
+        li {
+          margin-top: 10px;
+        }
+      }
     }
   }
   &-right-section {
