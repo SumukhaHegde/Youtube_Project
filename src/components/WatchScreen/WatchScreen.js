@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { getVideoDetailsByVideoId } from "../../Constants/API/Api";
 import { useSelector } from "react-redux";
 
+//watch screen page
 const WatchScreen = () => {
   const params = useParams();
   const videoId = params.key;
@@ -19,7 +20,6 @@ const WatchScreen = () => {
   const getVideoDetailsById = async () => {
     const { data } = await getVideoDetailsByVideoId(videoId);
     const details = data.items[0];
-    console.log(details);
     setVideoDetails(details);
   };
 
