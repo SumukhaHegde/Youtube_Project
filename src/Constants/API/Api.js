@@ -1,5 +1,4 @@
 import axios from "axios";
-import auth from "../../firebase";
 
 const GOOGLE_API = process.env.REACT_APP_YT_API_KEY;
 export const getVideosApi =
