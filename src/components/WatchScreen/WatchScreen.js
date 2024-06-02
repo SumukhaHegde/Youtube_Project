@@ -20,7 +20,6 @@ const WatchScreen = () => {
   const getVideoDetailsById = async () => {
     const { data } = await getVideoDetailsByVideoId(videoId);
     const details = data.items[0];
-    console.log(details);
     setVideoDetails(details);
   };
 
