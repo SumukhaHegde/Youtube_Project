@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import { getVideoDetailsByVideoId } from "../../Constants/API/Api";
 import { useSelector } from "react-redux";
 
-//watch screen page
 const WatchScreen = () => {
   const params = useParams();
   const videoId = params.key;
