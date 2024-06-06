@@ -7,7 +7,15 @@ const likedVideosListSlice = createSlice({
   },
   reducers: {
     addLikedVideos: (state, action) => {
-      state.likedVideos.push(action.payload);
+      console.log(action.payload.id);
+      if (state.likedVideos.length === 0) {
+        state.likedVideos.push(action.payload);
+      }
+      state.likedVideos.map((likedVideo) => {
+        if (likedVideo.id !== action.payload.id) {
+          state.likedVideos.push(action.payload);
+        }
+      });
     },
   },
 });
