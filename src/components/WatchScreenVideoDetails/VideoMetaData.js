@@ -24,6 +24,7 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
   };
 
   const handleLikeVideo = () => {
+    console.log("clicked");
     dispatch(addLikedVideos(videoDetails));
   };
 
