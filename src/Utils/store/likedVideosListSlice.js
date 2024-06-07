@@ -7,15 +7,18 @@ const likedVideosListSlice = createSlice({
   },
   reducers: {
     addLikedVideos: (state, action) => {
-      console.log(action.payload.id);
       if (state.likedVideos.length === 0) {
         state.likedVideos.push(action.payload);
+      } else {
+        state.likedVideos.map((likedVideo) => {
+          if (likedVideo.id !== action.payload.id) {
+            state.likedVideos.push(action.payload);
+          } else {
+            const index = state.likedVideos.indexOf(likedVideo);
+            state.likedVideos.splice(index, 1);
+          }
+        });
       }
-      state.likedVideos.map((likedVideo) => {
-        if (likedVideo.id !== action.payload.id) {
-          state.likedVideos.push(action.payload);
-        }
-      });
     },
   },
 });

@@ -11,6 +11,7 @@ import { addLikedVideos } from "../../Utils/store/likedVideosListSlice";
 
 const VideoMetaData = ({ videoDetails, videoId }) => {
   const [channelDetails, setChannelDetails] = useState(null);
+
   const dispatch = useDispatch();
   const {
     snippet: { channelId, channelTitle, description, publishedAt, title },
@@ -24,7 +25,6 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
   };
 
   const handleLikeVideo = () => {
-    console.log("clicked");
     dispatch(addLikedVideos(videoDetails));
   };
 
@@ -69,7 +69,7 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
             <button className="subscribe-btn">Subscribe</button>
           </div>
           <div className="video-likes-dislikes">
-            <div className="video-likes" onClick={handleLikeVideo}>
+            <div className="video-likes video-liked" onClick={handleLikeVideo}>
               <IoMdThumbsUp />
               <span>{numeral(likeCount).format("0.a")}</span>
             </div>
