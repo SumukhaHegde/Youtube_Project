@@ -2,15 +2,21 @@ import React, { useEffect, useState } from "react";
 import "./_videoMetaData.scss";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import numeral from "numeral";
-import {
-  getChannelDetailsByChannelId,
-  getChannelSubscriptionStatus,
-} from "../../Constants/API/Api";
+import { getChannelDetailsByChannelId } from "../../Constants/API/Api";
 import { useDispatch } from "react-redux";
 import { addLikedVideos } from "../../Utils/store/likedVideosListSlice";
 
 const VideoMetaData = ({ videoDetails, videoId }) => {
   const [channelDetails, setChannelDetails] = useState(null);
+  const [isLikedVideo, setIsLikedVideo] = useState(false);
+
+  const likedVideos = useSelector((store) => store.likedVideosList.likedVideos);
+
+  likedVideos?.map((likeVideo) => {
+    if (likeVideo.videoDetails.videoId === videoId) {
+      setIsLikedVideo(true);
+    }
+  });
 
   const dispatch = useDispatch();
   const {
@@ -25,7 +31,7 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
   };
 
   const handleLikeVideo = () => {
-    dispatch(addLikedVideos(videoDetails));
+    dispatch(addLikedVideos({ videoDetails, channelDetails }));
   };
 
   //Todo - User has to be loggedin using his gmail account: hence will create this code once implemented with the login with google account
@@ -69,7 +75,12 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
             <button className="subscribe-btn">Subscribe</button>
           </div>
           <div className="video-likes-dislikes">
-            <div className="video-likes video-liked" onClick={handleLikeVideo}>
+            <div
+              className={
+                isLikedVideo ? "video-likes video-liked" : "video-likes"
+              }
+              onClick={handleLikeVideo}
+            >
               <IoMdThumbsUp />
               <span>{numeral(likeCount).format("0.a")}</span>
             </div>

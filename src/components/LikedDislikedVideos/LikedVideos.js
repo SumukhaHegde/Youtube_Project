@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import VideoCards from "../BodyContainer/VideoContainer/VideoCards";
 import { Col, Row } from "react-bootstrap";
 import "./_likedVideo.scss";
+import LikedVideoContainer from "../BodyContainer/VideoContainer/LikedVideoContainer";
 
 const LikedVideos = () => {
   const likedVideos = useSelector((store) => store.likedVideosList.likedVideos);
-  console.log(likedVideos);
   return (
     <div>
       {likedVideos.length !== 0 ? (
@@ -18,8 +17,8 @@ const LikedVideos = () => {
               </Col>
             )) */}
           {likedVideos?.map((likeVideo) => (
-            <Col key={likeVideo.id} lg={3} md={4}>
-              <VideoCards videoDetails={likeVideo} />
+            <Col key={likeVideo.videoDetails.id} lg={3} md={4}>
+              <LikedVideoContainer likedVideo={likeVideo} />
             </Col>
           ))}
         </Row>
