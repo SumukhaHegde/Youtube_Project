@@ -50,8 +50,6 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
 
   useEffect(() => {
     getChannelDetailsById();
-
-    // getSubscriptionStatus();
   }, [videoId]);
   return (
     channelDetails && (
