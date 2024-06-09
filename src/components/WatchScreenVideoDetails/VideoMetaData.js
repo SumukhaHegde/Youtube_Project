@@ -18,7 +18,7 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
   const dispatch = useDispatch();
   const {
     snippet: { channelId, channelTitle, description, publishedAt, title },
-    statistics: { likeCount, viewCount },
+    statistics: { likeCount },
   } = videoDetails;
 
   const getChannelDetailsById = async () => {
