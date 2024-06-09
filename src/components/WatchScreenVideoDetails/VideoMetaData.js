@@ -3,20 +3,17 @@ import "./_videoMetaData.scss";
 import { IoMdThumbsDown, IoMdThumbsUp } from "react-icons/io";
 import numeral from "numeral";
 import { getChannelDetailsByChannelId } from "../../Constants/API/Api";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addLikedVideos } from "../../Utils/store/likedVideosListSlice";
 
 const VideoMetaData = ({ videoDetails, videoId }) => {
   const [channelDetails, setChannelDetails] = useState(null);
   const [isLikedVideo, setIsLikedVideo] = useState(false);
 
-  const likedVideos = useSelector((store) => store.likedVideosList.likedVideos);
+  console.log(videoId);
 
-  likedVideos?.map((likeVideo) => {
-    if (likeVideo.videoDetails.videoId === videoId) {
-      setIsLikedVideo(true);
-    }
-  });
+  const likedVideos = useSelector((store) => store.likedVideosList.likedVideos);
+  console.log(likedVideos);
 
   const dispatch = useDispatch();
   const {
@@ -44,7 +41,16 @@ const VideoMetaData = ({ videoDetails, videoId }) => {
   // };
 
   useEffect(() => {
+    likedVideos?.map((likeVideo) => {
+      if (likeVideo.videoDetails.id === videoId) {
+        setIsLikedVideo(true);
+      }
+    });
+  }, [likedVideos]);
+
+  useEffect(() => {
     getChannelDetailsById();
+
     // getSubscriptionStatus();
   }, [videoId]);
   return (
