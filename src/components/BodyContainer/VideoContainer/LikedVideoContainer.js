@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./videoCard.scss";
 import moment from "moment";
 import numeral from "numeral";
-import { fetchData } from "../../../Constants/API/Api";
-import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 
 const LikedVideoContainer = ({ likedVideo }) => {
