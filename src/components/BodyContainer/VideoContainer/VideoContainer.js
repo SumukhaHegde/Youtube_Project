@@ -6,7 +6,6 @@ import CatagoriesBar from "../../CategoriesBar/CatagoriesBar";
 import "./videoCard.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideosList } from "../../../Utils/store/videoItemsSlice";
-import SkeletonCard from "../../Skeleton/SkeletonCard";
 
 const VideoContainer = () => {
   const dispatch = useDispatch();

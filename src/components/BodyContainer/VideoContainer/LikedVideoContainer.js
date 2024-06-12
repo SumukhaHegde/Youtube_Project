@@ -9,7 +9,7 @@ const LikedVideoContainer = ({ likedVideo }) => {
 
   const {
     id,
-    snippet: { channelId, channelTitle, title, publishedAt, thumbnails },
+    snippet: { channelTitle, title, publishedAt, thumbnails },
     statistics: { viewCount, likeCount },
   } = likedVideo.videoDetails;
   const channelImg = likedVideo.channelDetails.snippet.thumbnails;
