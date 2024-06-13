@@ -6,6 +6,7 @@ import CatagoriesBar from "../../CategoriesBar/CatagoriesBar";
 import "./videoCard.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { addVideosList } from "../../../Utils/store/videoItemsSlice";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const VideoContainer = () => {
   const dispatch = useDispatch();
@@ -53,30 +54,31 @@ const VideoContainer = () => {
                 <SkeletonCard />
               </Col>
             )) */}
-        {videos &&
+        {/*//Todo: infinite scroll code off*/}
+        {/* {videos &&
           videos?.map((item) => (
             <Col key={item.id} lg={3} md={4}>
               <VideoCards videoDetails={item} />
             </Col>
           ))}
+      </Row> */}
+        <InfiniteScroll
+          dataLength={videos && videos.length}
+          next={getData}
+          hasMore={true}
+          loader={
+            <div className="spinner-border text-danger d-block mx-auto"></div>
+          }
+          className="row"
+        >
+          {videos &&
+            videos?.map((item) => (
+              <Col key={item.id} lg={3} md={4} sm={5}>
+                <VideoCards videoDetails={item} />
+              </Col>
+            ))}
+        </InfiniteScroll>{" "}
       </Row>
-      {/* //Todo: InfiniteScroll code */}
-      {/* <InfiniteScroll
-        dataLength={videos && videos.length}
-        next={getData}
-        hasMore={true}
-        loader={
-          <div className="spinner-border text-danger d-block mx-auto"></div>
-        }
-        className="row"
-      >
-        {videos &&
-          videos?.map((item) => (
-            <Col key={item.id} lg={3} md={4} sm={5}>
-              <VideoCards videoDetails={item} />
-            </Col>
-          ))}
-      </InfiniteScroll> */}
       {/* <Link to={"/watch?v=" + item.id} key={item.id}>
           
            </Link> */}
